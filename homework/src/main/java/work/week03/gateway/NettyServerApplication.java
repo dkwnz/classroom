@@ -1,7 +1,7 @@
 package work.week03.gateway;
 
 
-import io.github.kimmking.gateway.inbound.HttpInboundServer;
+import work.week03.gateway.inbound.HttpInboundServer;
 
 import java.util.Arrays;
 
