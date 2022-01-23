@@ -33,7 +33,6 @@ public class HttpForwardInboundHandler extends ChannelInboundHandlerAdapter {
         try {
             FullHttpRequest fullRequest = (FullHttpRequest) msg;
             httpForwad(fullRequest, ctx);
-
         } catch(Exception e) {
             e.printStackTrace();
         } finally {
