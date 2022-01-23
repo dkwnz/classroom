@@ -6,25 +6,9 @@ import io.netty.channel.*;
 import io.netty.handler.codec.http.*;
 import io.netty.util.CharsetUtil;
 
-import java.net.SocketAddress;
-import java.net.URI;
 
 public class NettyInboundHandler extends ChannelInboundHandlerAdapter {
 
-
-    @Override
-    public void channelActive(ChannelHandlerContext ctx){
-        try {
-            System.out.println(">>>>>>>>>>");
-            FullHttpRequest request = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/");
-            request.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json").set(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE).set(HttpHeaderNames.CONTENT_LENGTH, request.content().readableBytes()).set(HttpHeaderNames.HOST,"localhost");
-            ctx.write(request);
-            ctx.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
