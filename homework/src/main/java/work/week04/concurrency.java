@@ -21,7 +21,7 @@ public class concurrency {
 
         // 在这里创建一个线程或线程池，
         // 异步执行 下面方法
-        //方法一
+        //方法一：使用join
         Method1 method1 = new Method1();
         method1.start();
         method1.join();
@@ -30,7 +30,7 @@ public class concurrency {
         System.out.println("方法一异步计算结果为："+result);
         System.out.println("方法一使用时间："+ (System.currentTimeMillis()-start) + " ms");
 
-        //方法二
+        //方法二：使用wait/notifyAll
         Method2 method2 = new Method2();
         method2.start();
         synchronized (message) {
@@ -41,7 +41,7 @@ public class concurrency {
         System.out.println("方法二异步计算结果为："+result);
         System.out.println("方法二使用时间："+ (System.currentTimeMillis()-start) + " ms");
 
-        //方法三
+        //方法三：循环判断result里面是否有值
         Method3 method3 = new Method3();
         method3.start();
         while (method3.threadResult == 0) {
@@ -52,7 +52,7 @@ public class concurrency {
         System.out.println("方法三异步计算结果为："+result);
         System.out.println("方法三使用时间："+ (System.currentTimeMillis()-start) + " ms");
 
-        //方法四
+        //方法四：使用CompletableFuture
         ExecutorService service = Executors.newCachedThreadPool();
         CompletableFuture<Integer> future = new CompletableFuture<>();
         Method4 method4 = new Method4(future);
@@ -62,7 +62,7 @@ public class concurrency {
         System.out.println("方法四异步计算结果为："+result);
         System.out.println("方法四使用时间："+ (System.currentTimeMillis()-start) + " ms");
 
-        //方法五
+        //方法五：使用lock
         Method5 method5 = new Method5();
         method5.start();
         Thread.sleep(1000);
@@ -77,7 +77,7 @@ public class concurrency {
         System.out.println("方法五异步计算结果为："+result);
         System.out.println("方法五使用时间："+ (System.currentTimeMillis()-start) + " ms");
 
-        //方法六
+        //方法六：使用countDownLatch
         Method6 method6 = new Method6();
         method6.start();
         countDownLatch.await();
@@ -86,7 +86,7 @@ public class concurrency {
         System.out.println("方法六异步计算结果为："+result);
         System.out.println("方法六使用时间："+ (System.currentTimeMillis()-start) + " ms");
 
-        //方法七
+        //方法七：使用CyclicBarrier
         Method7 method7 = new Method7();
         method7.start();
         cyclicBarrier.await();
@@ -95,7 +95,7 @@ public class concurrency {
         System.out.println("方法七异步计算结果为："+result);
         System.out.println("方法七使用时间："+ (System.currentTimeMillis()-start) + " ms");
 
-        //方法八
+        //方法八：使用semaphore
         Method8 method8 = new Method8();
         method8.start();
         semaphore.acquire();
