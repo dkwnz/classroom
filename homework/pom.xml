@@ -106,6 +106,12 @@
             <artifactId>HikariCP</artifactId>
             <version>2.7.9</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.22</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 
